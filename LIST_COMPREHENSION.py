@@ -1,6 +1,6 @@
 """LIST COMPREHENSION"""
 
-"""podwajanie wartości"""
+"""doubling the value"""
 
 doubles = []
 for n in range(1, 11):
