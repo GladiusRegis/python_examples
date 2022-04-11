@@ -1,15 +1,13 @@
 def is_prime(number):
-
-    prime = True
-    if int(number) in [0, 1]:
-        prime = False
+    number = int(number)
+    if number in [0, 1]:
+        return False
 
     else:
-        for div in range(2, int(int(number) ** 0.5) + 1):
-            if int(number) % 2 == 0:
-                prime = False
-                break
-    return prime
+        for div in range(2, int(number ** 0.5 + 1)):
+            if number % div == 0:
+                return False
+    return True
 
 
 print(is_prime(input('Check that the integer is prime: ')))
