@@ -1,11 +1,10 @@
-def filter_vowels(text):
-    vowels = ['a', 'e', 'i', 'o', 'u']
+def choose_vowels(words):
+
     vowels_set = set()
-    for vowel in vowels:
-        for cher in text:
-            if cher == vowel:
-                vowels_set.add(vowel)
+    for char in words.lower():
+        if char in 'aeiouy':
+            vowels_set.add(char)
     return vowels_set
 
 
-print(return_vowels(input('text:')))
+print(choose_vowels(input('text:')))
