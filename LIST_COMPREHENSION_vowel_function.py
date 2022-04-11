@@ -10,4 +10,8 @@ def choose_vowels2(words):
 print(choose_vowels2(input('text:')))
 
 
+def choose_vowels1(words):
+    return {char for char in words.lower() if char in 'aeiouy'}
 
+
+print(choose_vowels1(input('text:')))
