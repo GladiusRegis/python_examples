@@ -9,6 +9,7 @@ def find_divisors(number):
 
 def calculate_common_divisor(number_1, number_2, offset=2):
     common_divisors = find_divisors(number_1) & find_divisors(number_2)
+    common_divisors = [divisor for divisor in common_divisors if divisor >= offset]
     return sorted(list(common_divisors))
 
 
