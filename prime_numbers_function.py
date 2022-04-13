@@ -19,5 +19,11 @@ def generate_prime_numbers():
         number += 1
 
 
-for n in generate_prime_numbers():
+number_char = int(input('Up to how many digits in a number to count: '))
+primes = generate_prime_numbers()
+
+for n in primes:
     print(f'{n} is a prime number')
+    if len(str(n)) >= number_char:
+        print(f'Generate for {n} numbers')
+        primes.close()
