@@ -1,10 +1,8 @@
-def get_factorial(number: int = 2) -> int:
-    i = number
-    factorial = number
-    while i > 1:
-        number -= 1
+def get_factorial(number: int) -> int:
+    factorial = 1
+    while number > 0:
         factorial *= number
-        i -= 1
+        number -= 1
 
     return factorial
 
