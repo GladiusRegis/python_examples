@@ -4,10 +4,7 @@ def get_sum(list1: list, list2: list) -> list:
     #     total.append(a + b)
     #
     # return total
-
-    zip_set = list(zip(list1, list2))
-    list_set = [sum(s) for s in zip_set]
-    return list_set
+    return [a + b for a, b in zip(list1, list2)]
 
 
 list_one = [2, 4, 6]
