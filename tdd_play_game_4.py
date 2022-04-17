@@ -1,20 +1,20 @@
 from random import choice
 
 
-def play_game(player_choice: str, computer_choice: str) ->int:
+def play_game(player_choice: str, computer_choice: str) -> int:
     choice_to_number = {
         'paper': 1,
         'rock': 2,
         'scissors': 3
     }
 
-    player = choice_to_number[player_choice]
+    pl = choice_to_number[player_choice]
     ai = choice_to_number[computer_choice]
 
     if player == ai:
         return 0
 
-    if (player == 1 and ai == 2) or (player == 2 and ai == 3) or (player == 3 and ai == 1):
+    if (pl == 1 and ai == 2) or (pl == 2 and ai == 3) or (pl == 3 and ai == 1):
         return 1
 
     return 2  # w pozostałych przypadkach, czyli gdy wygra komputer
