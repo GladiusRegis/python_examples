@@ -4,8 +4,15 @@ a = [16, 36, 25, 49]
 
 def map_and_filter(numbers: list) -> list:
     # sqrts = map(sqrt, numbers)
-    sqrts = map(lambda x: x ** 0.5, numbers)
-    return list(filter(lambda x: x % 2 == 0, sqrts))
+
+    # sqrts = map(lambda x: x ** 0.5, numbers)
+    # return list(filter(lambda x: x % 2 == 0, sqrts))
+    return list(
+        filter(
+            lambda x: x % 2 == 0,
+            map(lambda x: x ** 0.5, numbers)
+        )
+    )
 
 
 def test_map_and_filter():
