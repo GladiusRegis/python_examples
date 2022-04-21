@@ -1,12 +1,20 @@
-def rounding_float(function):
+def round_it(func):
     def wrapper(*args, **kwargs):
-        value = function(*args, **kwargs)
-        return round(value, 2)
+        return round(func(*args, **kwargs), 2)
 
     return wrapper
 
 
-@rounding_float
+def test_round_it():
+    @round_it
+    def function(value):
+        return value
+
+    assert function(3.448) == 3.45
+    assert function(3.5000) == 3.5
+
+
+@round_it
 def division(a: int, b: int) -> float:
     return a / b
 
