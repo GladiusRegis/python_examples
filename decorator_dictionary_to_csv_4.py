@@ -1,17 +1,16 @@
 def format_to_csv(function):
     def wrapper(*args, **kwargs):
         result = function(*args, **kwargs)
-        if len() == 0:  # ile jest elementów, jeśli w result jest 0
-            return ''   # zwraca pusty string
+        if len(result) == 0:
+            return ''
 
-        keys = result[0].keys()   # jest też możliwość metody
-                                # pop = popranie pierwszego elementu
-                                # shift pobranie ostatniego elementu
-                              # ale modyfikują liste
+        keys = result[0].keys()
         output = [';'.join(keys)]  # [first_name;last_name]
 
-        for row in
-        return
+        for row in result:
+            row_list = str(row.values())
+            output.append(';'.join(row_list))  # ['Jacob;Smith','...']
+        return '\n'.join(output)
 
     return wrapper
 
@@ -35,8 +34,18 @@ def test_format_to_csv():
         ]
     result = return_dict()
 
-    assert result == 'first_name;last_name\nJacob;Smith\nEmma;Johnson\nDaniel;Williams\n'
+    assert result == 'first_name;last_name\nJacob;Smith\nEmma;Johnson\nDaniel;Williams'
 
 # decorator notation without @
 # format_to_csv(return_dict)()
 
+@format_to_csv
+def return_sample():
+    return [
+        {'id': 1, 'name': 'lemon'},
+        {'id': 2, 'name': 'orange'},
+        {'id': 3, 'name': 'pineapple'}
+    ]
+
+
+print(return_sample())
