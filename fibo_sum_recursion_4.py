@@ -8,6 +8,11 @@ def fibonacci_sum(n):
     return fibonacci_sum(n - 1) + fibonacci_sum(n - 2) + 1
 
 
+"""The formula to calculate the (n + 1)th number in the sequence of Fibonacci 
+numbers can be given as,
+Fn = Fn-1 + Fn-2"""
+
+
 def test_fibonacci_sum():
     assert fibonacci_sum(0) == 0
     assert fibonacci_sum(1) == 0
