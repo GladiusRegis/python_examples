@@ -9,25 +9,15 @@ date_end = datetime.strptime(end, '%d.%m.%Y')
 
 diff = (date_end - date_start).days
 
-print(f'Salary: {diff * wage}')
+working_days = diff
+project_day = date_start
 
-for _ in range(0, diff):
-    project_day = date_start + timedelta(days=1)
-    print(f'You are working on {project_day.strftime("%a, %d.%m.%Y")}')
+for _ in range(0, working_days + 1):
+    if project_day.strftime('%a') in ['Sat', 'Sun']:
+        working_days += 1
+    print(f'You work on {project_day.strftime("%a, %d.%m.%Y")}')
+    project_day += timedelta(days=1)
 
-
-#
-# while counter <= numbers_days:
-#     day_week = (d_start + timedelta(days=counter))
-#     print(day_week)
-#     week = day_week.weekday()
-#     print(week)
-#     counter += 1
-#     if week in [0, 6]:
-#         holideys += daily_rate
-#
-# salary_total = salary + holideys * daily_rate
-# print(salary_total)
-#
+print(f'Salary: {working_days * wage}')
 
 
