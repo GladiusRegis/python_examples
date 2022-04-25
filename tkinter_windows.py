@@ -1,9 +1,14 @@
 import tkinter as tk
+from tkinter import messagebox
 
 
 def send_name():
-    print(first_name.get())
-    print('click')
+    # print(first_name.get())
+    # print('click')
+    if first_name.get() == 'Arkadiusz':
+        messagebox.showinfo(title='OK', message='Hello!')
+    else:
+        messagebox.showinfo(title='Something went wrong', message='I do not know you')
 
 
 window = tk.Tk()
