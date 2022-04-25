@@ -1,42 +1,47 @@
 from random import randint
-from math import fabs
 import tkinter as tk
-from tkinter import messagebox
 
 
-def guess_number(number_choice: int) -> int:
+def guess_number():
+    diff = abs(target - int(guess.get()))
+    if diff == 0:
+        tip.configure(text=f'Congratulations, you guessed it. The result is {len(guesses)}')
+        return
 
-    rand_number = randint(1, 100)
-    counter = 1
+    guesses.append(diff)
+    if len(guesses) == 1:
+        return
+    if guesses[-1] > guesses[-2]:
+        tip.configure(text='Worm...')
+        # odwołanie się do label tip
+    if guesses[-1] < guesses[-2]:
+        tip.configure(text='Cold...')
+    if guesses[-1] == guesses[-2]:
+        tip.configure(text='Neither cold nor warm...')
 
-    while number_choice != rand_number:
-        counter += 1
-        print(f"That's not the number. This is the {counter} try .")
-        next_try = int(input('Try again:'))
-        if fabs(next_try - rand_number) < fabs(number_choice - rand_number):
-            print('Warm')
-        else:
-            print('Cold')
-        number_choice = next_try
-
-    return counter
+    # print('Zgadula!') # dodajemy aby sprawdzić czy działa
 
 
-# you_win = guess_number(int(input('Guess what number was drawn: ')))
-# if you_win > 0:
-#     print(f'Congratulations, you guessed it the {you_win} time')
+target = randint(1, 50)
+print(target)
 
+guesses = []
 
 window = tk.Tk()
 window.title('Play the game.')
+window.minsize(width=250, height=250)
+window.geometry("250x250")
 
 label = tk.Label(window, text='Guess the drawn number!')
 label.pack()
 
-number = tk.Entry()
-number.pack()
+guess = tk.Entry(window)
+guess.pack()
 
 button = tk.Button(text="Check!", command=guess_number)
 button.pack()
+
+tip = tk.Label(window, text='')
+tip.pack()
 
 window.mainloop()
