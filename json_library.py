@@ -1,34 +1,31 @@
 from json import load, dump
 
-print("""Home library""")
-finish = False
-while finish is not True:
-    menu = input("""Available commands:
-                     - [p]rint
-                     - [a]dd
-                     - exit - other key
-                             :""")
+books = []
+try:
+    with open('books.json') as file:
+        books = load(file)
 
-    with open('library.json', 'r') as data:
-        books = load(data)
+except FileNotFoundError:
+    books = []
 
-    if menu == 'p':
-        print(f'Name of library: {books["title"]}')
-        for book in books["books"]:
-            print(f' - {book["author"]} - {book["title"]} - {book["pages"]}')
+choice = input('Available commands [p]rint / [a]dd: ')
 
-    elif menu == 'a':
-        author = input('author: ')
-        title = input('title: ')
-        pages = input('pages: ')
+if choice == 'p':
+    for book in books:
+        print(f"- Author: {book['author']}, Tytle: {book['title']}, Pages: {book['pages']}")
+elif choice == 'a':
+    author = input('Name and surname of the author: ')
+    title = input("Book's title: ")
+    pages = input('Number of pages: ')
 
-        with open('library.json', 'w') as data:
-            books['books'].append({
-                'id': len(books["books"]) + 1,
-                'author': author,
-                'pages': pages
-            })
-        dump(books, data)
+    books.append(
+        {
+            'author': author,
+            'title': title,
+            'pages': pages
+        }
+    )
 
-    else:
-        finish = True
+    with open('books.json', 'w') as file:
+        dump(books, file)
+
