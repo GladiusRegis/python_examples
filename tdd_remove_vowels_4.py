@@ -18,8 +18,9 @@ def remove_vowels2(text) -> str:
 
 def remove_vowels3(text) -> str:
     vowels = 'aeiouyAEIOUY'
-    return ''.join([text.replace(char, '') for char in str(text) if char in vowels])
-# the list comprehension doesn't work
+    #  return ''.join([text.replace(char, '') for char in str(text) if char in vowels])
+    # the list comprehension doesn't work
+    return ''.join([char for char in str(text) if char not in vowels])
 
 
 def remove_vowels4(text: str) -> str:
