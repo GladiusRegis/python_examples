@@ -28,3 +28,13 @@ def test_add_meeting():
     assert len(calendar.meetings) == 1
 
 
+def test_add_two_meeting():
+    # given
+    birthday = Meeting(datetime(2020, 11, 9, 12, 0), 'My birthday!')
+    birthday2 = Meeting(datetime(2021, 11, 9, 12, 0), 'My birthday!')
+    calendar = Calendar()
+    # when
+    calendar.add_meeting(birthday)
+    calendar.add_meeting(birthday2)
+    # then
+    assert len(calendar.meetings) == 2
