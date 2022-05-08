@@ -35,5 +35,7 @@ class Child(Parent):
         return 'child'
 
 
-sample = Child()
-print(sample.get_type())
+sample_parent = Parent()
+sample_child = Child()
+print(sample_parent.get_type())
+print(sample_child.get_type())
