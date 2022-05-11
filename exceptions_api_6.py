@@ -12,4 +12,4 @@ try:
         print('Capital', country_data)
 except (URLError, HTTPError) as error:
     print('Connection error')
-ą
+
